@@ -1,0 +1,50 @@
+---
+interface Props {
+  headline: string;
+  subheadline?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+}
+
+const {
+  headline,
+  subheadline = 'Transform your business with our cutting-edge solutions',
+  ctaText = 'Get Started',
+  ctaHref = '#contact',
+  secondaryCtaText,
+  secondaryCtaHref,
+} = Astro.props;
+---
+
+<section class="section relative overflow-hidden">
+  <!-- Background gradient (optional) -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary via-background to-secondary opacity-50" />
+
+  <div class="container-tight relative z-10">
+    <div class="text-center max-w-3xl mx-auto">
+      <!-- Headline -->
+      <h1 class="animate-on-scroll text-balance mb-6">
+        <span class="gradient-text">{headline}</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="animate-on-scroll animate-delay-100 text-lg md:text-xl text-text-muted mb-8 max-w-2xl mx-auto">
+        {subheadline}
+      </p>
+
+      <!-- CTAs -->
+      <div class="animate-on-scroll animate-delay-200 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={ctaHref} class="btn-primary">
+          {ctaText}
+        </a>
+        {secondaryCtaText && secondaryCtaHref && (
+          <a href={secondaryCtaHref} class="btn-secondary">
+            {secondaryCtaText}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

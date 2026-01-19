@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Stats from '../components/sections/Stats.astro';
+import ValueProps from '../components/sections/ValueProps.astro';
+import Portfolio from '../components/sections/Portfolio.astro';
+import Footer from '../components/sections/Footer.astro';
+import ContactForm from '../components/islands/ContactForm';
+
+// Example data - replace with your content
+const stats = [
+  { value: '500+', label: 'Projects Completed' },
+  { value: '98%', label: 'Client Satisfaction' },
+  { value: '10+', label: 'Years Experience' },
+  { value: '24/7', label: 'Support Available' },
+];
+
+const valueProps = [
+  {
+    icon: '⚡',
+    title: 'Lightning Fast',
+    description: 'Built for speed with static generation and optimized assets.',
+  },
+  {
+    icon: '🎨',
+    title: 'Beautifully Designed',
+    description: 'Modern, clean aesthetics that make your brand stand out.',
+  },
+  {
+    icon: '📱',
+    title: 'Mobile First',
+    description: 'Responsive design that looks great on any device.',
+  },
+  {
+    icon: '🔒',
+    title: 'Secure & Reliable',
+    description: 'Enterprise-grade security with 99.9% uptime guarantee.',
+  },
+  {
+    icon: '🚀',
+    title: 'SEO Optimized',
+    description: 'Built-in SEO best practices to boost your rankings.',
+  },
+  {
+    icon: '💬',
+    title: 'Dedicated Support',
+    description: 'Expert team ready to help you succeed.',
+  },
+];
+
+const portfolio = [
+  {
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+    title: 'Brand Redesign',
+    category: 'Branding',
+    link: '#',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop',
+    title: 'E-commerce Platform',
+    category: 'Web Development',
+    link: '#',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
+    title: 'Mobile App',
+    category: 'App Development',
+    link: '#',
+  },
+];
+
+const socialLinks = [
+  { platform: 'Twitter', url: 'https://twitter.com', icon: '𝕏' },
+  { platform: 'LinkedIn', url: 'https://linkedin.com', icon: '🔗' },
+  { platform: 'Instagram', url: 'https://instagram.com', icon: '📷' },
+];
+---
+
+<Layout title="Welcome" description="A modern landing page built with Astro">
+  <main>
+    <Hero
+      headline="Build Something Amazing"
+      subheadline="We help businesses create stunning digital experiences that convert visitors into customers."
+      ctaText="Get Started"
+      ctaHref="#contact"
+      secondaryCtaText="Learn More"
+      secondaryCtaHref="#about"
+    />
+
+    <Stats stats={stats} />
+
+    <ValueProps
+      heading="Why Choose Us"
+      subheading="Everything you need to build a successful online presence"
+      items={valueProps}
+    />
+
+    <Portfolio
+      heading="Our Work"
+      subheading="A selection of projects we're proud of"
+      items={portfolio}
+    />
+
+    <!-- Contact form - React island with on-scroll hydration -->
+    <ContactForm client:visible />
+
+    <Footer
+      companyName="Your Company"
+      tagline="Building the future, one project at a time."
+      socialLinks={socialLinks}
+    />
+  </main>
+</Layout>

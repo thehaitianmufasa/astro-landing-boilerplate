@@ -1,0 +1,31 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="section-sm bg-surface">
+  <div class="container-wide">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {stats.map((stat, index) => (
+        <div
+          class={`animate-on-scroll animate-delay-${(index + 1) * 100} text-center`}
+        >
+          <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">
+            {stat.value}
+          </div>
+          <div class="text-text-muted text-sm md:text-base">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
