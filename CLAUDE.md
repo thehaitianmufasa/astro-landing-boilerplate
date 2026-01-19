@@ -82,10 +82,10 @@ src/
 
 ### 1. Design Tokens (globals.css)
 
-Update CSS variables for 60-30-10 color system:
+Update CSS variables in `@theme` block for 60-30-10 color system:
 
 ```css
-:root {
+@theme {
   /* 60% - Background */
   --color-primary: #1a1a2e;
 
@@ -155,7 +155,8 @@ PUBLIC_FORM_ENDPOINT=https://formspree.io/f/xxxxx
 
 ## Performance Targets
 
-- **JS Bundle:** < 10KB (only React islands)
+- **Initial Load:** 0 KB JS (static HTML, React loads lazily)
+- **React Island:** ~5KB per component (loads on scroll via `client:visible`)
 - **Lighthouse:** 95+ all categories
 - **Core Web Vitals:** All green
 
